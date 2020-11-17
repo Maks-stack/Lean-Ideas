@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+    <h2>Welcome to Lean Ideas, {{user.username}}</h2>
+
+        <span>
+             <a href="{% url 'logout' %}" type="submit">Log out</a>
+        </span>
+
+    {% else %}
+
+    <h2>Welcome to Lean Ideas</h2>
+
+    <div>
+
+        <span>
+             <a href="{% url 'register' %}" type="submit">Register</a>
+         </span>
+
+        <span>
+             <a href="{% url 'login' %}" type="submit">Log in</a>
+        </span>
+
+    </div>
+
+{% endif %}
+
+</body>
+</html>
