@@ -15,7 +15,7 @@
 
   <div class="container">
     <h1>Register</h1>
-    <p>Please fill in this form to create an account.</p>
+    <p>Please fill in this form to create an account. Each field is mandatory</p>
     <hr>
 
     <label for="fname"><b>First Name</b></label>
@@ -38,7 +38,8 @@
     <hr>
 
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
-    <button type="submit" class="registerbtn btn waves-effect waves-light btn btn-large m-md"">Register</button>
+    <a class="registerbtn btn waves-effect waves-light btn btn-large m-md" href="{% url 'index' %}">Back</a>
+    <button type="submit" class="registerbtn btn waves-effect waves-light btn btn-large m-md">Register</button>
   </div>
 </form>
 </body>

@@ -17,10 +17,11 @@
                   action="{% url 'login' %}"
                   method="post">
             {% csrf_token %}
-            <h1><font size="6">Fill in the login credentials</font></h1>
+            <h1>Login form</h1>
 
             {{ form }}
 
+            <a class="btn btn-success" href="{% url 'index' %}">Back</a>
             <button type="submit" class="btn btn-success">Sign in</button>
     </form>
   </div>
