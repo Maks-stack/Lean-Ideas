@@ -1,34 +1,42 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
-    {% if user.is_authenticated %}
-    <h2>Welcome to Lean Ideas, {{user.username}}</h2>
+    <div class= container>
+        {% if user.is_authenticated %}
+        <div class = "header">
+            <h2>Lean Ideas</h2>
+        </div>
+    
+            <span>
+                <a href="{% url 'logout' %}" type="submit">Log out</a>
+            </span>
 
-        <span>
-             <a href="{% url 'logout' %}" type="submit">Log out</a>
-        </span>
+        {% else %}
 
-    {% else %}
+        <div class = "header">
+            <h2>Lean Ideas</h2>
+        </div>
 
-    <h2>Welcome to Lean Ideas</h2>
+        <div class = "buttonContainer">
+            
+                <a class="btn waves-effect waves-light btn btn-large m-md" href="{% url 'register' %}" type="submit">Register</a>
+            
 
-    <div>
+            
+                <a class="btn waves-effect waves-light btn btn-large m-md" href="{% url 'login' %}" type="submit">Log in</a>
+            
+        </div>
 
-        <span>
-             <a href="{% url 'register' %}" type="submit">Register</a>
-         </span>
-
-        <span>
-             <a href="{% url 'login' %}" type="submit">Log in</a>
-        </span>
-
-    </div>
-
-{% endif %}
+        {% endif %}
+    </div>    
 
 </body>
 </html>
