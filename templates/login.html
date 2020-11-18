@@ -9,19 +9,22 @@
 </head>
 <body>
 
-    <div class="container">
-      <form role="form"
-            action="{% url 'login' %}"
-            method="post">
+    <div class="container" style="height: 95%;">
+      <div class="row valign-wrapper" style="height: 100%"> 
+        <div class="col offset-s3 s5 valign">
+          
+            <form role="form" action="{% url 'login' %}" method="post" style="background-color: white;">
+                {% csrf_token %}
+                <h1>Login form</h1>
 
-              {% csrf_token %}
-              <h1>Login form</h1>
+                {{ form }}
 
-              {{ form }}
-
-              <a class="btn btn-success" href="{% url 'register' %}">Register</a>
-              <button type="submit" class="btn btn-success">Sign in</button>
-      </form>
+                <a class="btn btn-success" href="{% url 'register' %}">Register</a>
+                <button type="submit" class="btn btn-success">Sign in</button>
+            </form>
+        
+        </div>
+      </div>
     </div>
 
 </body>
