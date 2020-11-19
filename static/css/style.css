@@ -8,11 +8,10 @@ body{
     font-family: Verdana;
 }
 
-.login-form{
-    background-color: rgba(246, 251, 252, 0.897);
-    padding: 1px 40px 40px 40px;
+.login-form > label
+{
+    font-size: 20px;
 }
-
 .header {
     margin: auto;
     width: 50%;

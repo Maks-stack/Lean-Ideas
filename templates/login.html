@@ -16,12 +16,14 @@
           
             <form class="login-form" role="form" action="{% url 'login' %}" method="post" >
                 {% csrf_token %}
-                <div class="center-align"><h1 class="title">Login form</h1></div>
+                <div class="center-align"><h1 class="title">Lean Ideas</h1></div>
 
                 {{ form }}
 
-                <a class="btn btn-success" href="{% url 'register' %}">Register</a>
-                <button type="submit" class="btn btn-success">Sign in</button>
+                <div class="button-container">
+                  <a class="btn btn-success" href="{% url 'register' %}">Register</a>
+                  <button type="submit" class="btn btn-success">Sign in</button>
+                </div>
             </form>
         
         </div>
