@@ -1,7 +1,20 @@
 body{
-    font-family: Arial,Helvetica,sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     height: 100vh;
     min-height: 100vh;
+    background-image:url("https://i.ibb.co/zJPkkJJ/bg.jpg");
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size: cover;
+}
+
+.title{
+    font-family: Verdana;
+}
+
+.login-form{
+    background-color: rgba(246, 251, 252, 0.897);
+    padding: 1px 40px 40px 40px;
 }
 
 .header {
@@ -9,9 +22,11 @@ body{
     width: 50%;
     margin-top: 20%;
 }
+
 .header > h2{
     text-align: center;
 }
+
 
 .container {
 	margin: auto;
@@ -27,3 +42,4 @@ body{
 .buttonContainer > a {
     margin: 6px;
 }
+

@@ -13,9 +13,9 @@
       <div class="row valign-wrapper" style="height: 100%"> 
         <div class="col offset-s3 s5 valign">
           
-            <form role="form" action="{% url 'login' %}" method="post" style="background-color: rgba(246, 251, 252, 0.897);">
+            <form class="login-form" role="form" action="{% url 'login' %}" method="post" style="background-color: rgba(246, 251, 252, 0.897);">
                 {% csrf_token %}
-                <h1>Login form</h1>
+                <div class="center-align"><h1 class="title">Login form</h1></div>
 
                 {{ form }}
 
