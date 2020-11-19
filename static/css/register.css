@@ -5,8 +5,8 @@ body{
     background-size: cover;
 }
 
-.login-form{
-    background-color: rgba(246, 251, 252, 0.897);
+.register-form{
+    background-color: rgba(246, 251, 252, 0.93);
     padding: 1px 40px 90px 40px;
     margin-top: 1vh;
 }

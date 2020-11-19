@@ -6,12 +6,13 @@ body{
 }
 
 .login-form{
-    background-color: rgba(246, 251, 252, 0.897);
+    background-color: rgba(246, 251, 252, 0.93);
     padding: 1px 40px 90px 40px;
 }
 
 h1{
     padding-bottom: 3vh;
+    font-size: 6vh !important;
 }
 
 .button-container{

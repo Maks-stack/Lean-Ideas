@@ -15,10 +15,12 @@
 
       <div class="col offset-s1 s9 valign">
 
-        <form class="login-form" action="{% url 'register' %}" method="post" style="max-height: 95;">
+        <form class="register-form" action="{% url 'register' %}" method="post" style="max-height: 95;">
           {% csrf_token %}
-          <div class="center-align"><h1 class="title">Registration</h1></div>
-          <p style="font-style: italic;">Please fill in this form to create an account. Each field is mandatory</p>
+          <div class="center-align">
+            <h1 class="title">Registration form</h1>
+            <p style="font-style: italic;">Please fill in this form to create an account. Each field is mandatory</p>
+          </div>
           
           <div class="row valign-wrapper" style="height: 100%"> 
             <div class="col s6 valign">      
