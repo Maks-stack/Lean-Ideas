@@ -7,12 +7,12 @@ body{
 
 .register-form{
     background-color: rgba(246, 251, 252, 0.93);
-    padding: 1px 40px 70px 40px;
+    padding: 1px 40px 10vh 40px;
     margin-top: 1vh;
 }
 
 h1{
-    margin-top: 2vh !important;
+    margin-top: 30px !important;
     margin-bottom: 1vh !important;
     padding-bottom: 1vh;
     font-size: 6vh !important;
