@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
+    {% if user.is_authenticated %}
     <div class= container>
-        {% if user.is_authenticated %}
+        
         <div class="ideasContainer">
             <div class = "header">
                 <h2>Lean Ideas</h2>
@@ -22,7 +23,9 @@
                 <a href="{% url 'logout' %}" type="submit">Log out</a>
             </span>
         </div>
+    </div>
         {% else %}
+        <div class= container style="height: 95%;">
             <div class="row valign-wrapper" style="height: 100%"> 
               <div class="col offset-s3 s5 valign">
                 
@@ -41,9 +44,10 @@
               </div>
             </div>
           
-
-        {% endif %}
-    </div>    
+        </div>
+    </div>
+    {% endif %}
+        
 
 </body>
 </html>
