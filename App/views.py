@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
+from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 
 # Create your views here.
 
@@ -21,8 +23,17 @@ def register(request):
             password = request.POST['psw']
             passwordCheck = request.POST['psw-repeat']
             if password != passwordCheck:
+                messages.error(request, 'Your passwords do not match.')
                 return render(request, 'register.html')
             else:
+                users = User.objects.filter(username=username)
+                if users:
+                    messages.error(request, 'The username already exists.')
+                    return render(request, 'register.html')
+                users = User.objects.filter(email=email)
+                if users:
+                    messages.error(request, 'The email address already exists.')
+                    return render(request, 'register.html')
                 user = User.objects.create_user(username, email, password)
                 user.first_name = fname
                 user.last_name = lname
