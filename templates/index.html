@@ -6,34 +6,41 @@
     <title>Title</title>
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 </head>
 <body>
     <div class= container>
         {% if user.is_authenticated %}
-        <div class = "header">
-            <h2>Lean Ideas</h2>
-        </div>
-    
+        <div class="ideasContainer">
+            <div class = "header">
+                <h2>Lean Ideas</h2>
+            </div>
+        
+            <h2>Idea Board</h2>
             <span>
                 <a href="{% url 'logout' %}" type="submit">Log out</a>
             </span>
-
+        </div>
         {% else %}
-
-        <div class = "header">
-            <h2>Lean Ideas</h2>
-        </div>
-
-        <div class = "buttonContainer">
-            
-                <a class="btn waves-effect waves-light btn btn-large m-md" href="{% url 'register' %}" type="submit">Register</a>
-            
-
-            
-                <a class="btn waves-effect waves-light btn btn-large m-md" href="{% url 'login' %}" type="submit">Log in</a>
-            
-        </div>
+            <div class="row valign-wrapper" style="height: 100%"> 
+              <div class="col offset-s3 s5 valign">
+                
+                  <form class="login-form" role="form" action="{% url 'login' %}" method="post" >
+                      {% csrf_token %}
+                      <div class="center-align"><h1 class="title">Lean Ideas</h1></div>
+      
+                      {{ form }}
+      
+                      <div class="button-container">
+                        <a class="btn btn-success" href="{% url 'register' %}">Register</a>
+                        <button type="submit" class="btn btn-success">Sign in</button>
+                      </div>
+                  </form>
+              
+              </div>
+            </div>
+          
 
         {% endif %}
     </div>    

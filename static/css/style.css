@@ -38,3 +38,8 @@ body{
     margin: 6px;
 }
 
+.ideasContainer{
+    background-color: rgba(246, 251, 252, 0.897);
+    min-height: 100vh;
+}
+
