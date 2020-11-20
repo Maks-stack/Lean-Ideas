@@ -20,17 +20,18 @@
           <div class="center-align">
             <h1 class="title">Registration form</h1>
             <p style="font-style: italic;">Please fill in this form to create an account. Each field is mandatory</p>
+            {% if messages %}
+            <ul>
+              {% for message in messages %}
+                <li class ="errorMessage" >{{ message }} </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
           </div>
           
           <div class="row valign-wrapper" style="height: 100%"> 
             <div class="col s6 valign">      
-              {% if messages %}
-              <ul>
-                {% for message in messages %}
-                  <li class ="errorMessage" >{{ message }} </li>
-                {% endfor %}
-              </ul>
-              {% endif %}
+             
               
               <label for="fname">First Name*</label>
               <input type="text" placeholder="Enter First Name" name="fname" id="fname" required>
