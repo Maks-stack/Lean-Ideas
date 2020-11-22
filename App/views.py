@@ -2,11 +2,21 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from App.models import Idea
+
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-def index(request):
-    return render(request, 'index.html')
+def login(request):
+    if request.user.is_authenticated():
+       return redirect('ideaBoard')
+
+@login_required
+def getIdeas(request):
+    print("INDEX")
+    ideas = Idea.objects.all
+    return render(request,'ideaBoard.html', {'ideas': ideas})
 
 def register(request):
     if request.method == 'POST':
@@ -41,3 +51,4 @@ def register(request):
                 return redirect('login')
     else:
         return render(request, 'register.html')
+       

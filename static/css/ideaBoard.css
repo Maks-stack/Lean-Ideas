@@ -1,0 +1,22 @@
+.ideasContainer {
+    padding: 20px;
+    height:100%;
+}
+
+.container{
+    height:100% !important;
+}
+
+tbody tr{ 
+    cursor: pointer; 
+    transition: 0.3s;
+}
+
+tbody tr:hover {
+    background-color: #009688;
+    color: white;;
+}
+
+.below-table{
+    margin-top:50px;
+}

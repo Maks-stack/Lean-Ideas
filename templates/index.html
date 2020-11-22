@@ -8,6 +8,9 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Castoro&display=swap" rel="stylesheet">
 </head>
 <body>
     {% if user.is_authenticated %}
@@ -31,8 +34,16 @@
                 
                   <form class="login-form" role="form" action="{% url 'login' %}" method="post" >
                       {% csrf_token %}
-                      <div class="center-align"><h1 class="title">Lean Ideas</h1></div>
+                    <div class="center-align" style="margin-top:25px">
+             
+                   
+                            <img style="margin:30px;" src="../static/img/Logo.svg"/>
+                  
+                         
+                    </div>
       
+                       
+
                       {{ form }}
       
                       <div class="button-container">
