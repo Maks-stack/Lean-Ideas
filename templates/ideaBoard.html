@@ -48,7 +48,7 @@
                     {% if ideas %}
          
                     {% for idea in ideas %}
-                        <tr onclick="window.location='#';" class="row100 body">                            
+                        <tr onclick="window.location='/ideaDetails/?id={{ idea.id }}';" class="row100 body">                            
                                 <td class="cell100 column1">{{ idea.name }}</td>
                                 <td class="cell100 column2">{{ idea.content }}</td>
                                 <td class="cell100 column3">{{ idea.author }}</td>

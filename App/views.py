@@ -25,6 +25,13 @@ def login(request):
        return redirect('ideaBoard')
 
 
+@login_required
+def ideaDetailView(request):
+    id = request.GET.get('id')
+    print(id)
+    return render(request,'ideaDetails.html')
+
+
 def register(request):
     if request.method == 'POST':
         if request.POST.get('fname') and \

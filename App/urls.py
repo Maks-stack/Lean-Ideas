@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 from . import views
 
-from App.views import register, getIdeas, addIdea
+from App.views import register, getIdeas, addIdea, ideaDetailView
 
 from django.http import HttpResponse
 
@@ -19,4 +19,5 @@ urlpatterns = [
     path("logout", LogoutView.as_view(),name ="logout"),
     path("ideaBoard", getIdeas, name="ideaBoard"),
     path("addIdea", addIdea, name="addIdea")
+    path(r'^ideaDetails/(?P<pk>\d+)', ideaDetailView)
 ] 
