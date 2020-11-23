@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IdeaBoard</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ideaBoard.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+       
+    </script>
+
+</head>
+<body>
+    <div class= container>
+        <nav>
+            <div class="nav-wrapper teal">
+              <a href="#" class="brand-logo">Lean Ideas</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a  href="/ideaBoard">All Ideas</a></li>
+                <li><a  href="/ideaBoard">Your Ideas</a></li>
+                <li><a  href="c/profile">Profile</a></li>
+                <li><a  href="{% url 'logout' %}" type="submit">Log out</a></li>
+              </ul>
+            </div>
+          </nav>
+
+        <div class="ideasContainer">
+            <h2>Ideas Details</h2>
+        </div>
+    </div>
+    
+        
+
+</body>
+</html>
