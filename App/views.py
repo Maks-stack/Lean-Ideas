@@ -87,5 +87,6 @@ def addIdea(request):
 
 @login_required
 def getIdeas(request):
-    ideas = Idea.objects.all
+    ideas = Idea.objects.filter(author=request.user)
     return render(request,'ideaBoard.html', {'ideas': ideas})
+
