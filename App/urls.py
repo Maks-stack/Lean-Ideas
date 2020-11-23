@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 from . import views
 
-from App.views import register, getIdeas
+from App.views import register, getIdeas, addIdea
 
 from django.http import HttpResponse
 
@@ -17,5 +17,6 @@ urlpatterns = [
     path('register', register, name='register'),
     path("", LoginView.as_view(template_name="index.html", redirect_authenticated_user=True),name="login"),
     path("logout", LogoutView.as_view(),name ="logout"),
-    path("ideaBoard", getIdeas)
+    path("ideaBoard", getIdeas, name="ideaBoard"),
+    path("addIdea", addIdea, name="addIdea")
 ] 
