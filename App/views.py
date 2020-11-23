@@ -27,8 +27,8 @@ def login(request):
 
 @login_required
 def ideaDetailView(request):
-    id = request.GET.get('id')
-    print(id)
+    _id = id
+    print(_id)
     return render(request,'ideaDetails.html')
 
 

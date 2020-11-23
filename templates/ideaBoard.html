@@ -41,6 +41,8 @@
                         <th class="cell100 column2">Abstract</th>
                         <th class="cell100 column3">Author</th>
                         <th class="cell100 column4">Likes</th>
+                        <th class="cell100 column4">Category</th>
+                        <th class="cell100 column4">Last Updated</th>
                     </tr>
                 </thead>
         
@@ -48,11 +50,13 @@
                     {% if ideas %}
          
                     {% for idea in ideas %}
-                        <tr onclick="window.location='/ideaDetails/?id={{ idea.id }}';" class="row100 body">                            
+                        <tr onclick="window.location='/ideaDetails/{{ idea.id }}';" class="row100 body">                            
                                 <td class="cell100 column1">{{ idea.name }}</td>
                                 <td class="cell100 column2">{{ idea.content }}</td>
                                 <td class="cell100 column3">{{ idea.author }}</td>
                                 <td class="cell100 column4">{{ idea.vote }}</td>
+                                <td class="cell100 column4">{{ idea.category }}</td>
+                                <td class="cell100 column4">{{ idea.lastUpdated }}</td>
                             </a>
                         </tr>
                     {% endfor %}
