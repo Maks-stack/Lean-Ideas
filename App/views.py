@@ -24,14 +24,6 @@ def login(request):
     if request.user.is_authenticated():
        return redirect('ideaBoard')
 
-
-@login_required
-def ideaDetailView(request):
-    _id = id
-    print(_id)
-    return render(request,'ideaDetails.html')
-
-
 def register(request):
     if request.method == 'POST':
         if request.POST.get('fname') and \
@@ -97,3 +89,10 @@ def getIdeas(request):
     ideas = Idea.objects.filter(author=request.user)
     return render(request,'ideaBoard.html', {'ideas': ideas})
 
+@login_required
+def getIdeaDetail(request, ideaID):
+    idea = Idea.objects.get(id=ideaID)
+    if idea:
+        print(idea.id)
+        print(idea.name)
+        return render(request,'ideaDetails.html', {'idea':idea})
