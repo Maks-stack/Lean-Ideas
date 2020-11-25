@@ -1,10 +1,75 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>IdeaBoard</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/createIdea.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+       
+    </script>
+
 </head>
 <body>
+    <div class= container>
+        <nav>
+            <div class="nav-wrapper teal">
+              <a href="#" class="brand-logo">Lean Ideas</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a  href="/ideaBoard">All Ideas</a></li>
+                <li><a  href="/ideaBoard">Your Ideas</a></li>
+                <li><a  href="c/profile">Profile</a></li>
+                <li><a  href="{% url 'logout' %}" type="submit">Log out</a></li>
+              </ul>
+            </div>
+        </nav>
+
+        <div class="createIdeaContainer">
+           
+            <div class="addIdeaForm"> 
+                
+                  
+                    <form role="form" action="{% url 'addIdea' %}" method="post" >
+                        {% csrf_token %}
+                        <div class="center-align"><h1 class="title">Create your idea !</h1></div>
+        
+                        <label for="name">Idea name</label>
+                        <input type="text" placeholder="Enter your idea name" name="name" id="name" required>
+
+                        <label for="category">Category :</label>
+                        <select name="category" id="category" required style="display: block;">
+                            <option value="Technology">Technology</option>
+                            <option value="Health">Health</option>
+                            <option value="Sports">Sports</option>
+                        </select>
+
+                        <label for="content">Content :</label>
+                        <textarea name="content" id="" cols="30" rows="10" required placeholder="Enter the content of your idea"></textarea>
+
+                        <button type="submit">Create idea</button>
+        
+                        <div class="button-container">
+                          <a class="btn btn-success" href="{% url 'register' %}">Register</a>
+                          <button type="submit" class="btn btn-success">Sign in</button>
+                        </div>
+                    </form>
+                
+           
+              </div>
+        </div>
+    </div>
+    
+        
 
 </body>
 </html>
