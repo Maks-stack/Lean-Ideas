@@ -85,9 +85,16 @@ def addIdea(request):
         return render(request, "addIdea.html")
 
 @login_required
-def getIdeas(request):
-    ideas = Idea.objects.filter(author=request.user)
+def getIdeas(request, filter):
+    ideas = Idea.objects.all()
+    if filter == "own":
+        ideas = Idea.objects.filter(author=request.user)
+    
     return render(request,'ideaBoard.html', {'ideas': ideas})
+
+@login_required
+def redirectIdeaBoard(request):
+    return redirect('ideaBoard/own')
 
 @login_required
 def getIdeaDetail(request, ideaID):

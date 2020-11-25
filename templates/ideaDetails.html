@@ -24,7 +24,7 @@
     <div class= container>
         <nav>
             <div class="nav-wrapper teal">
-              <a href="#" class="brand-logo">Lean Ideas</a>
+              <a href="#" class="brand-logo"><img style="margin-left:30px;width: 145px;" src="../static/img/Logo.svg"/></a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a  href="/ideaBoard">All Ideas</a></li>
                 <li><a  href="/ideaBoard">Your Ideas</a></li>
@@ -36,15 +36,22 @@
 
         <div class="ideasContainer">
           <div style="margin-bottom: 30px;">
-            <h4 style="display:inline">{{ idea.name}}</h4>
-            <a style="display:inline" class="" href="{% url 'addIdea' %}" type="submit"><i class="small material-icons">edit</i></span></a>
-            <a style="display:inline" class="" href="{% url 'addIdea' %}" type="submit"><i class="small material-icons">delete_forever</i></span></a>
+            <h3 style="display:inline">{{ idea.name}}</h3>
+            <a style="display:inline; float: right" class="" href="{% url 'addIdea' %}" type="submit"><i class="medium material-icons">delete</i></span></a>
+            <a style="display:inline; float: right; margin-right: 50px;" class="" href="{% url 'addIdea' %}" type="submit"><i class="medium material-icons">edit</i></span></a>
           </div>
             <span class="category">{{ idea.category }}</span>
-            <p style="background-color:#f2f2f2; padding:10px; border-radius: 3px;"> {{ idea.content}} </p>
-            <h2>Comments:</h2>
+            <p> {{ idea.content}} </p>
+            <p> Rating : {{ idea.vote}} </p>
+           
             
-
+            {% if idea.comments %}
+            <h4>Comments:</h4>
+            {% for comment in idea.comments %}
+            <h5>{{comment}}</h5>
+            {% endfor %}
+                    
+            {% endif %}
             
             
             
