@@ -123,7 +123,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
-LOGIN_REDIRECT_URL="/ideaBoard"
+LOGIN_REDIRECT_URL="/ideaBoard/own"
 LOGOUT_REDIRECT_URL="/"
 LOGIN_URL="login"
 REGISTER_REDIRECT_URL = "register"

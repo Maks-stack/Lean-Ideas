@@ -24,10 +24,10 @@
     <div class= container>
         <nav>
             <div class="nav-wrapper teal">
-              <a href="#" class="brand-logo">Lean Ideas</a>
+              <a href="#" class="brand-logo"><img style="margin-left:30px;width: 145px;" src="../static/img/Logo.svg"/></a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a  href="/ideaBoard">All Ideas</a></li>
-                <li><a  href="/ideaBoard">Your Ideas</a></li>
+                <li><a  href="/ideaBoard/all">All Ideas</a></li>
+                <li><a  href="/ideaBoard/own">Your Ideas</a></li>
                 <li><a  href="c/profile">Profile</a></li>
                 <li><a  href="{% url 'logout' %}" type="submit">Log out</a></li>
               </ul>
@@ -39,7 +39,7 @@
                 <h2 style="vertical-align: middle; display:inline">Your Ideas</h2>
                 <a style="float: right; display:inline;" class="btn-floating btn-large waves-effect waves-light teal" href="{% url 'addIdea' %}" type="submit"><i class="material-icons">add</i></a>
             
-            <table style="Overflow-y:scroll;">
+            <table>
                 <thead>
                     <tr class="row100 head">
                         <th class="cell100 column1">Idea Name</th>
