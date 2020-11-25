@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/ideaBoard.css' %}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
@@ -33,8 +35,11 @@
           </nav>
 
         <div class="ideasContainer">
-            <h2>Your Ideas</h2>
-            <table>
+           
+                <h2 style="vertical-align: middle; display:inline">Your Ideas</h2>
+                <a style="float: right; display:inline;" class="btn-floating btn-large waves-effect waves-light teal" href="{% url 'addIdea' %}" type="submit"><i class="material-icons">add</i></a>
+            
+            <table style="Overflow-y:scroll;">
                 <thead>
                     <tr class="row100 head">
                         <th class="cell100 column1">Idea Name</th>
@@ -52,11 +57,15 @@
                     {% for idea in ideas %}
                         <tr onclick="window.location='/ideaDetails/{{ idea.id }}';" class="row100 body">                            
                                 <td class="cell100 column1">{{ idea.name }}</td>
-                                <td class="cell100 column2">{{ idea.content }}</td>
+                                <td style="max-width: 400px; display: -webkit-box;
+                                -webkit-line-clamp: 3;
+                                -webkit-box-orient: vertical;
+                                overflow: hidden;
+                                " class="cell100 column2">{{ idea.content }}</td>
                                 <td class="cell100 column3">{{ idea.author }}</td>
                                 <td class="cell100 column4">{{ idea.vote }}</td>
-                                <td class="cell100 column4">{{ idea.category }}</td>
-                                <td class="cell100 column4">{{ idea.lastUpdated }}</td>
+                                <td class="cell100 column4"><span class="category">{{ idea.category }}</span></td>
+                                <td class="cell100 column4">awdawdawdw</td>
                             </a>
                         </tr>
                     {% endfor %}
@@ -65,7 +74,7 @@
                     
                 </tbody>
             </table>    
-            <div class ="below-table"><a class="btn btn-success" href="{% url 'addIdea' %}" type="submit">Create New Idea</a></div>
+            
             
         </div>
     </div>

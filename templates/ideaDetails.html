@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/ideaBoard.css' %}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
@@ -33,10 +35,21 @@
           </nav>
 
         <div class="ideasContainer">
-            <h2>Ideas Details</h2>
-            {{ idea.id}}
-            {{ idea.name}}
-            {{ idea.content}}
+          <div style="margin-bottom: 30px;">
+            <h4 style="display:inline">{{ idea.name}}</h4>
+            <a style="display:inline" class="" href="{% url 'addIdea' %}" type="submit"><i class="small material-icons">edit</i></span></a>
+            <a style="display:inline" class="" href="{% url 'addIdea' %}" type="submit"><i class="small material-icons">delete_forever</i></span></a>
+          </div>
+            <span class="category">{{ idea.category }}</span>
+            <p style="background-color:#f2f2f2; padding:10px; border-radius: 3px;"> {{ idea.content}} </p>
+            <h2>Comments:</h2>
+            
+
+            
+            
+            
+
+
         </div>
     </div>
     
