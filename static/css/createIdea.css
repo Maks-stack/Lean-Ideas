@@ -48,3 +48,8 @@
 ::placeholder{
     color: gray !important;
 }
+
+.cancel{
+    background-color: white !important;
+    color: #26a69a !important;
+}
