@@ -43,6 +43,12 @@
                     <form role="form" method="post" >
                         {% csrf_token %}
                         <div class="center-align"><h1 class="title">Edit your idea !</h1></div>
+                        
+                        Idea ID:{{ idea.id }}<br>
+                        Idea name:{{ idea.name }}<br>
+                        Idea content:{{ idea.content }}<br>
+                        Idea author:{{ idea.author }}<br>
+                        Idea category:{{ idea.category }}<br>
 
                         <label for="name">Idea name</label>
                         <input type="text" placeholder="Edit your idea name" name="name" id="name" required>
