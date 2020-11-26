@@ -39,6 +39,7 @@
             <div class="addIdeaForm">
 
 
+                <div></div>
                     <form role="form" method="post" >
                         {% csrf_token %}
                         <div class="center-align"><h1 class="title">Edit your idea !</h1></div>
@@ -57,11 +58,6 @@
                         <textarea name="content" id="" cols="30" rows="10" required placeholder="Enter the content of your idea"></textarea>
 
                         <button type="submit">Update idea</button>
-
-                        <div class="button-container">
-                          <a class="btn btn-success" href="{% url 'register' %}">Register</a>
-                          <button type="submit" class="btn btn-success">Sign in</button>
-                        </div>
                     </form>
 
 

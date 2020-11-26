@@ -1,3 +1,42 @@
 .createIdeaContainer{
     background-color:  rgba(246, 251, 252, 0.897);
 }
+
+.title{
+    padding-top: 30px;
+    margin: 0px 0px 50px 0px
+}
+
+.formContainer{
+    width: 60%;
+    margin: auto;
+}
+
+.labelName{
+    color: black;
+    font-size: x-large;
+    display: block !important;
+    margin-bottom: 10px;
+}
+
+#category{
+    width: 120px;
+}
+
+#name{
+    width: 300px;
+}
+
+.textIdea{
+    min-height: 200px;
+}
+
+.button-container{
+    margin-top: 20px;
+    float: right;
+    margin-bottom: 30px;
+}
+
+::placeholder{
+    color: gray !important;
+}
