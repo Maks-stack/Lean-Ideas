@@ -55,19 +55,22 @@
                     {% if ideas %}
          
                     {% for idea in ideas %}
-                        <tr onclick="window.location='/ideaDetails/{{ idea.id }}';" class="row100 body">                            
-                                <td class="cell100 column1">{{ idea.name }}</td>
-                                <td style="max-width: 400px; display: -webkit-box;
-                                -webkit-line-clamp: 3;
-                                -webkit-box-orient: vertical;
-                                overflow: hidden;
-                                " class="cell100 column2">{{ idea.content }}</td>
-                                <td class="cell100 column3">{{ idea.author }}</td>
-                                <td class="cell100 column4">{{ idea.vote }}</td>
-                                <td class="cell100 column4"><span class="category">{{ idea.category }}</span></td>
-                                <td class="cell100 column4">awdawdawdw</td>
-                            </a>
-                        </tr>
+                    
+                    <tr onclick="window.location='/ideaDetails/{{ idea.id }}';" class="row100 body">                            
+                        
+                            <td class="cell100 column1"><div class="tableCellContainer">{{ idea.name }}</div></td>
+                            <td style="max-width: 400px; display: -webkit-box;
+                            -webkit-line-clamp: 3;
+                            -webkit-box-orient: vertical;
+                            overflow: hidden;
+                            " class="cell100 column2"><div class="tableCellContainer">{{ idea.content }}</div></td>
+                            <td class="cell100 column3"><div class="tableCellContainer">{{ idea.author }}</div></td>
+                            <td class="cell100 column4"><div class="tableCellContainer">{{ idea.vote }}</div></td>
+                            <td class="cell100 column4"><div class="tableCellContainer"><span class="category">{{ idea.category }}</span></div></td>
+                            <td class="cell100 column4"><div class="tableCellContainer">awdawdawdw</div></td>
+                        
+                    </tr>
+                    
                     {% endfor %}
                     
                     {% endif %}

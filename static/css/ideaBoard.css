@@ -34,3 +34,8 @@ td {
     margin-top:50px;
 }
 
+.tableCellContainer {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+}
