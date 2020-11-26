@@ -24,22 +24,21 @@
     <div class= container>
         <nav>
             <div class="nav-wrapper teal">
-              <a href="#" class="brand-logo"><img style="margin-left:30px;width: 145px;" src="../static/img/Logo.svg"/></a>
+              <a href="#" class="brand-logo">Lean Ideas</a>
               <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a  href="/ideaBoard/all">All Ideas</a></li>
-                <li><a  href="/ideaBoard/own">Your Ideas</a></li>
+                <li><a  href="/ideaBoard">All Ideas</a></li>
+                <li><a  href="/ideaBoard">Your Ideas</a></li>
                 <li><a  href="c/profile">Profile</a></li>
                 <li><a  href="{% url 'logout' %}" type="submit">Log out</a></li>
               </ul>
             </div>
-          </nav>
+        </nav>
 
         <div class="createIdeaContainer">
 
             <div class="addIdeaForm">
 
 
-                <div></div>
                     <form role="form" method="post" >
                         {% csrf_token %}
                         <div class="center-align"><h1 class="title">Edit your idea !</h1></div>
@@ -58,6 +57,11 @@
                         <textarea name="content" id="" cols="30" rows="10" required placeholder="Enter the content of your idea"></textarea>
 
                         <button type="submit">Update idea</button>
+
+                        <div class="button-container">
+                          <a class="btn btn-success" href="{% url 'register' %}">Register</a>
+                          <button type="submit" class="btn btn-success">Sign in</button>
+                        </div>
                     </form>
 
 
