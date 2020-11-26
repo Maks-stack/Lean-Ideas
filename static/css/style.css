@@ -63,8 +63,11 @@ body{
 
 .category {
     background-color: lightskyblue;
-    border-radius: 10%;
-    padding: 10px;;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
 }
 
 
