@@ -1,6 +1,7 @@
 .ideasContainer {
     padding: 20px;
     height: 100%;
+    padding: 30px 50px 0 50px;
 }
 html, body{
     max-height:100%;

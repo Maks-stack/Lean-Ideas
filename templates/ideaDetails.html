@@ -36,11 +36,12 @@
 
         <div class="ideasContainer">
           <div style="margin-bottom: 30px;">
-            <h3 style="display:inline">{{ idea.name}}</h3>
+            <h3 style="display:inline; color:#419788"">{{ idea.name}}</h3>
             <a style="display:inline; float: right" class="" href="{% url 'deleteIdea' idea.id %}" type="submit"><i class="medium material-icons">delete</i></span></a>
             <a style="display:inline; float: right; margin-right: 50px;" class="" href="{% url 'editIdea' idea.id %}" type="submit"><i class="medium material-icons">edit</i></span></a>
           </div>
             <span class="category">{{ idea.category }}</span>
+            <p  style="font-size:20px; font-weight: bold; color:#419788">Content:</p>
             <p> {{ idea.content}} </p>
             <p> Last Updated : {{ idea.lastUpdate}} </p>
             <p> Rating : {{ idea.vote}} </p>
