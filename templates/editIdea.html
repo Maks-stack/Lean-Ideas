@@ -6,7 +6,6 @@
     <title>IdeaBoard</title>
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/createIdea.css' %}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
@@ -38,38 +37,31 @@
 
             <div class="addIdeaForm">
 
-
+                <div class="formContainer">
                     <form role="form" method="post" >
                         {% csrf_token %}
                         <div class="center-align"><h1 class="title">Edit your idea !</h1></div>
                         
-                        Idea ID:{{ idea.id }}<br>
-                        Idea name:{{ idea.name }}<br>
-                        Idea content:{{ idea.content }}<br>
-                        Idea author:{{ idea.author }}<br>
-                        Idea category:{{ idea.category }}<br>
+                        <label class="labelName" for="name">Idea name</label>
+                        <input type="text" placeholder="Edit your idea name" name="name" id="name" value="{{ idea.name }}" required>
 
-                        <label for="name">Idea name</label>
-                        <input type="text" placeholder="Edit your idea name" name="name" id="name" required>
-
-                        <label for="category">Category :</label>
+                        <label class="labelName" for="category">Category :</label>
                         <select name="category" id="category" required style="display: block;">
-                            <option value="Technology">Technology</option>
-                            <option value="Health">Health</option>
-                            <option value="Sports">Sports</option>
+                            <option value="Technology" {% if idea.category == "Technology" %}selected{% endif %}>Technology</option>
+                            <option value="Health" {% if idea.category == "Health" %}selected{% endif %}>Health</option>
+                            <option value="Sports" {% if idea.category == "Sports" %}selected{% endif %}>Sports</option>
                         </select>
 
-                        <label for="content">Content :</label>
-                        <textarea name="content" id="" cols="30" rows="10" required placeholder="Enter the content of your idea"></textarea>
-
-                        <button type="submit">Update idea</button>
+                        <label class="labelName" for="content">Content :</label>
+                        <textarea name="content" id="" cols="30" rows="10" required placeholder="Enter the content of your idea">{{ idea.content }}</textarea>
 
                         <div class="button-container">
-                          <a class="btn btn-success" href="{% url 'register' %}">Register</a>
-                          <button type="submit" class="btn btn-success">Sign in</button>
+                            <a class="btn btn-success" href="/ideaBoard">Cancel</a>
+                            <button class="btn btn-success" type="submit">Update idea</button>
                         </div>
+                        <div class="spacer" style="clear: both;"></div>
                     </form>
-
+                </div>
 
               </div>
         </div>
