@@ -86,6 +86,7 @@ def addIdea(request):
 
 @login_required
 def editIdea(request, ideaID):
+    idea = Idea.objects.get(id=ideaID)
     if request.method == "POST":
         if request.POST.get('name') and \
             request.POST.get('content') and \
@@ -94,7 +95,6 @@ def editIdea(request, ideaID):
             name = request.POST['name']
             content =request.POST['content']
             category = request.POST['category']
-            idea = Idea.objects.get(id=ideaID)
             idea.name = name
             idea.category = category
             idea.content = content
@@ -102,7 +102,7 @@ def editIdea(request, ideaID):
             return redirect('/ideaBoard/own')
 
     else:
-        return render(request, "editIdea.html")
+        return render(request, "editIdea.html", {'idea':idea})
 
 @login_required
 def deleteIdea(request, ideaID):
