@@ -85,6 +85,32 @@ def addIdea(request):
         return render(request, "addIdea.html")
 
 @login_required
+def editIdea(request, ideaID):
+    if request.method == "POST":
+        if request.POST.get('name') and \
+            request.POST.get('content') and \
+            request.POST.get('category'):
+
+            name = request.POST['name']
+            content =request.POST['content']
+            category = request.POST['category']
+            idea = Idea.objects.get(id=ideaID)
+            idea.name = name
+            idea.category = category
+            idea.content = content
+            idea.save()
+            return redirect('ideaBoard')
+
+    else:
+        return render(request, "editIdea.html")
+
+@login_required
+def deleteIdea(request, ideaID):
+    idea = Idea.objects.get(id=ideaID)
+    idea.delete()
+    getIdeas(request, 'own')
+
+@login_required
 def getIdeas(request, filter):
     ideas = Idea.objects.all()
     if filter == "own":
