@@ -3,6 +3,7 @@
 }
 
 .title{
+    font-size: 5vh;
     padding-top: 30px;
     margin: 0px 0px 50px 0px
 }
@@ -16,11 +17,15 @@
     color: black;
     font-size: x-large;
     display: block !important;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 #category{
     width: 120px;
+    background-color: rgba(255, 255, 255, 0.897);
+    border-color: black;
+    display: block;
 }
 
 #name{
@@ -29,6 +34,9 @@
 
 .textIdea{
     min-height: 200px;
+    background-color: rgba(255, 255, 255, 0.897);
+    padding-left: 10px;
+    padding-top: 10px;
 }
 
 .button-container{
