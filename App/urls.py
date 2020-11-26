@@ -1,5 +1,5 @@
 from django.urls import path, re_path
-from App.views import register
+from App.views import register, editIdea, deleteIdea
 from django.contrib import admin
 
 import re
@@ -22,5 +22,7 @@ urlpatterns = [
     path("ideaBoard/<str:filter>", getIdeas, name="ideaBoard"),
     path("ideaBoard", redirectIdeaBoard),
     path("addIdea", addIdea, name="addIdea"),
-    path("ideaDetails/<int:ideaID>", getIdeaDetail, name="ideaDetails")
+    path("ideaDetails/<int:ideaID>", getIdeaDetail, name="ideaDetails"),
+    path("editIdea/<int:ideaID>", editIdea, name="editIdea"),
+    path("deleteIdea/<int:ideaID>", deleteIdea, name="deleteIdea")
 ] 
