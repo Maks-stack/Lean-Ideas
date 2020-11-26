@@ -79,7 +79,7 @@ def addIdea(request):
             idea = Idea(name=name, content=content, category=category, author=author,
                         vote=vote)
             idea.save()
-            return redirect('ideaBoard')
+            return render(request, 'ideaBoard.html')
 
     else:
         return render(request, "addIdea.html")
@@ -99,7 +99,7 @@ def editIdea(request, ideaID):
             idea.category = category
             idea.content = content
             idea.save()
-            return redirect('ideaBoard')
+            return render(request, 'ideaBoard.html')
 
     else:
         return render(request, "editIdea.html")
@@ -108,7 +108,7 @@ def editIdea(request, ideaID):
 def deleteIdea(request, ideaID):
     idea = Idea.objects.get(id=ideaID)
     idea.delete()
-    getIdeas(request, 'own')
+    return render(request, 'ideaBoard.html')
 
 @login_required
 def getIdeas(request, filter):
