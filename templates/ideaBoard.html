@@ -33,64 +33,36 @@
               </ul>
             </div>
           </nav>
-
-        <div class="ideasContainer">
-           
-                <h2 style="vertical-align: middle; display:inline">Your Ideas</h2>
-                <a style="float: right; display:inline;" class="btn-floating btn-large waves-effect waves-light teal" href="{% url 'addIdea' %}" type="submit"><i class="material-icons">add</i></a>
-            
-            <table>
-                <thead>
-                    <tr class="row100 head">
-                        <th class="cell100 column1">Idea Name</th>
-                        <th class="cell100 column2">Abstract</th>
-                        <th class="cell100 column3">Author</th>
-                        <th class="cell100 column4">Likes</th>
-                        <th class="cell100 column4">Category</th>
-                        <th class="cell100 column4">Last Updated</th>
-                    </tr>
-                </thead>
         
-                <tbody>
-                    {% if ideas %}
-         
-                    {% for idea in ideas %}
-                    
-                    <tr onclick="window.location='/ideaDetails/{{ idea.id }}';" class="row100 body">                            
-                        
-                            <td class="cell100 column1"><div style="
-                                max-width: 100px; 
-                                min-height: 40px;
-                                display: -webkit-inline-box;
-                                -webkit-line-clamp: 2;
-                                -webkit-box-orient: vertical;
-                                overflow: hidden;"
-                                class="tableCellContainer"><p>{{ idea.name }}</p></div></td>
-                            <td class="cell100 column2">
-                                <div style="
-                                max-width: 400px; 
-                                min-height: 40px;
-                                display: -webkit-inline-box;
-                                -webkit-line-clamp: 2;
-                                -webkit-box-orient: vertical;
-                                overflow: hidden;" 
-                            class="tableCellContainer"><p>{{ idea.content }}</p></div></td>
-                            <td class="cell100 column3"><div class="tableCellContainer">{{ idea.author }}</div></td>
-                            <td class="cell100 column4"><div class="tableCellContainer">{{ idea.vote }}</div></td>
-                            <td class="cell100 column4"><div class="tableCellContainer"><span class="category">{{ idea.category }}</span></div></td>
-                            <td class="cell100 column4"><div class="tableCellContainer">{{ idea.lastUpdate }}</div></td>
-                        
-                    </tr>
-                    
-                    {% endfor %}
-                    
-                    {% endif %}
-                    
-                </tbody>
-            </table>    
-            
-            
+        <div class="ideasContainer">
+
+            {% if "own" in request.path %}
+            <h2 style="vertical-align: middle; display:inline">Your Ideas</h2>
+            <a style="float: right; display:inline;" class="btn-floating btn-large waves-effect waves-light teal" href="{% url 'addIdea' %}" type="submit"><i class="material-icons">add</i></a>
+            {% endif %}
+
+            <div class="row">
+                {% if ideas %}
+                {% for idea in ideas %}
+                <div class="col s8 m4">
+
+                  <div class="card darken-1">
+                    <div onclick="window.location='/ideaDetails/{{ idea.id }}';" class="card-content">
+                      <span class="card-title">{{ idea.name }}</span>
+                      <span class="category-card">{{ idea.category }}</span>
+                      <p class="abstract-card">{{ idea.content|truncatechars:30 }}.</p>
+                      <span class="author-card">by <span style="font-weight: bold;">{{ idea.author }}</span></span>
+                    </div>
+                  </div>
+
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div> 
         </div>
+    </div>
+
+     
     </div>
     
         

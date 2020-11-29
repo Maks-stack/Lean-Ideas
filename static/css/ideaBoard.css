@@ -41,3 +41,35 @@ td {
     display: flex;
     align-items: center;
 }
+
+.category-card{
+    display: block !important;
+    margin-bottom: 10px !important;
+    color: #009688;
+}
+
+.card{
+    background-color: white !important;
+}
+
+.card:hover{
+    background-color: #009688 !important;
+    cursor: pointer;
+}
+
+.card:hover .card-title, .card:hover .category-card{
+    color: white;
+}
+
+.card-title{
+    color: #009688;
+}
+
+.abstract-card, .author-card{ 
+    color: darkslategray;
+}
+
+.author-card{
+    display: block !important;
+    margin-top: 10px;
+}
