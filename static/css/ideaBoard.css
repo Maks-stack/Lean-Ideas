@@ -8,8 +8,9 @@ html, body{
     max-height:100%;
 }
 
-.container{
-    height:100% !important;
+.pageContainer{
+    width: 80% !important;
+    margin: auto;
 }
 
 tbody tr{ 
