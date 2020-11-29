@@ -42,7 +42,7 @@
                 <div class="col s8 m4">
 
                   <div class="card darken-1">
-                    <div onclick="window.location='/ideaDetails/{{ idea.id }}';" class="card-content white-text">
+                    <div onclick="window.location='/ideaDetails/{{ idea.id }}';" class="card-content">
                       <span class="card-title">{{ idea.name }}</span>
                       <span class="category-card">{{ idea.category }}</span>
                       <p class="abstract-card">{{ idea.content|truncatechars:30 }}.</p>
