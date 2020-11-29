@@ -116,7 +116,7 @@ def getIdeas(request, filter):
     if filter == "own":
         ideas = Idea.objects.filter(author=request.user)
     
-    return render(request,'allIdeas.html', {'ideas': ideas})   # I changed this
+    return render(request,'ideaBoard.html', {'ideas': ideas})   # I changed this
 
 @login_required
 def redirectIdeaBoard(request):
