@@ -86,6 +86,11 @@ td {
 }
 
 .fa{
+    margin-top: 5px;
+}
+
+.vote-number{
     margin-left: auto;
-    margin-top: auto;
+    margin-right: 10px;
+    margin-top: 10px;
 }
