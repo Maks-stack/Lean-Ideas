@@ -26,30 +26,55 @@
 
         var cards = []
 
+        var allCards = []
+
+        var activeSearchKey = ""
+        var activeCategory="All"
+
         $( document ).ready(function() {
-            $('.card-title').each(function(i, obj) {                
-                var key = $(obj).html()
-                cards.push({ [key] : $(obj).closest(".col")})
-                
-            });
 
-            $("#filterByTitle").on("input", function(){
-                var input = $(this).val().toLowerCase()
-                
-                var filteredCards = cards.filter((item)=>{
-                    return Object.keys(item)[0].toLowerCase().includes(input)
-                });
-
-                $.each(cards, function(key, value) {
-                    console.log($(Object.values(value)[0]))
-                    $(Object.values(value)[0]).hide()
-                })
-
-                $.each(filteredCards, function (i, item) {
-                    $(Object.values(item)[0]).show()
-                });
+            $('.category-card').each(function(i,obj){
+                allCards.push($(this).closest(".col"))
             })
+
+            InitializeSelect()
+        
+            $("#filterByTitle").on("input", function(){
+                activeSearchKey = $(this).val().toLowerCase()
+                ApplyFilters()
+            })
+
+            $('#categorySelector').on('change', function (e) {
+                activeCategory = this.value;
+                ApplyFilters()
+            });
         })
+
+        function ApplyFilters(){
+            
+            $(allCards).each(function(i,obj){
+
+                if($(obj).find(".card-title").html().toLowerCase().includes(activeSearchKey) && ($(obj).find(".category-card").html() === activeCategory || activeCategory === "All") ){
+                    $(obj).show()
+                }else{
+                    $(obj).hide()
+                }
+            })
+        }
+        
+        function InitializeSelect(){
+            var uniqueCategories = []
+            $("#categorySelector").children().each(function () {
+
+                if($.inArray($(this).val(), uniqueCategories) > -1 ){
+                    $(this).remove()
+                }else{
+                    uniqueCategories.push($(this).val())
+                }
+            })
+            $('select').formSelect();
+        }
+
     </script>
 
 </head>
@@ -70,26 +95,20 @@
         <div class="ideasContainer">
 
             <div class="filteringContainer">
-                <input placeholder="Placeholder" id="filterByTitle" type="text" class="validate">
+                <input style="margin-top: 1rem;" placeholder="Keyword search..." id="filterByTitle" type="text" class="validate">
                 
-                <div class="categoryDropDown">
-                    <!-- Dropdown Trigger -->
-                    <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
-
-                    <!-- Dropdown Structure -->
-                    <ul id='dropdown1' class='dropdown-content'>
-                        <li><a href="#!">one</a></li>
-                        <li><a href="#!">two</a></li>
-                        <li class="divider" tabindex="-1"></li>
-                        <li><a href="#!">three</a></li>
-                        <li><a href="#!"><i class="material-icons">view_module</i>four</a></li>
-                        <li><a href="#!"><i class="material-icons">cloud</i>five</a></li>
-                    </ul>
-                </div>
+                <div class="input-field col s12">
+                    <select id="categorySelector">
+                    <option disabled selected>Category</option>
+                    <option>All</option>
+                    {% if ideas %}
+                    {% for idea in ideas %}                     
+                      <option vale="{{ idea.category }}">{{ idea.category }}</option>
+                    {% endfor %}
+                    {% endif %}
+                    </select>
+                  </div>
             </div>
-
-
-
 
             {% if "own" in request.path %}
             <h2 style="vertical-align: middle; display:inline">Your Ideas</h2>
