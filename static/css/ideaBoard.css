@@ -71,7 +71,6 @@ td {
 }
 
 .author-card{
-    display: block !important;
     margin-top: 10px;
 }
 
@@ -79,4 +78,14 @@ td {
     width:100%;
     display: flex;
     gap:10px;
+}
+
+.card-bottom{
+    display: flex;
+    align-content: space-between;
+}
+
+.fa{
+    margin-left: auto;
+    margin-top: auto;
 }
