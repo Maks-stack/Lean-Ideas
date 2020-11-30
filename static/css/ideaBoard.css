@@ -66,9 +66,16 @@ td {
     color: #009688;
 }
 
-.abstract-card, .author-card{ 
+.abstract-card, .author-card, .date-card{ 
     color: darkslategray;
 }
+
+.date-card{
+    font-size: small;
+    display: block !important;
+    margin-bottom: 10px;
+}
+
 
 .author-card{
     margin-top: 10px;

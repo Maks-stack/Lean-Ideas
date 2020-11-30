@@ -125,10 +125,11 @@
                     <div onclick="window.location='/ideaDetails/{{ idea.id }}';" class="card-content">
                       <span class="card-title">{{ idea.name }}</span>
                       <span class="category-card">{{ idea.category }}</span>
+                      <span class="date-card">{{ idea.lastUpdate|date:"d F Y"}}</span>
                       <p class="abstract-card">{{ idea.content|truncatechars:30 }}.</p>
                       <div class="card-bottom">
                         <span class="author-card">by <span style="font-weight: bold;">{{ idea.author }}</span></span>
-                        <span class="vote-number">0</span> <!-- Change 0 to the number of positive vote -->
+                        <span class="vote-number">{{ idea.vote}}</span>
                         <i class="fa fa-thumbs-up" style="font-size:24px"></i>
                       </div>
                     </div>
