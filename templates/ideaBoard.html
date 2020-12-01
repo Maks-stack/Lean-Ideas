@@ -28,7 +28,7 @@
         var allCards = []
 
         var activeSearchKey = ""
-        var activeCategory="All"
+        var activeCategory= "All"
 
         $( document ).ready(function() {
 
@@ -59,13 +59,18 @@
         function ApplyFilters(){
             
             $(allCards).each(function(i,obj){
-
-                if($(obj).find(".card-title").html().toLowerCase().includes(activeSearchKey) && ($(obj).find(".category-card").html() === activeCategory || activeCategory === "All") ){
+                if(Filter(obj)){ 
                     $(obj).show()
                 }else{
                     $(obj).hide()
                 }
             })
+        }
+
+        function Filter(obj){
+            return $(obj).find(".card-title").html().toLowerCase().includes(activeSearchKey) && //this is the check for the name of the idea
+                    ($(obj).find(".category-card").html() === activeCategory || activeCategory === "All") // this is the check for the category or category that is selected is "ALL"
+                     //We can add more filters here
         }
         
         function InitializeSelect(){
