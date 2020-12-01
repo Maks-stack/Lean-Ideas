@@ -25,8 +25,6 @@
             var instances = M.Dropdown.init(elems);
         });
 
-        var cards = []
-
         var allCards = []
 
         var activeSearchKey = ""
@@ -49,6 +47,13 @@
                 activeCategory = this.value;
                 ApplyFilters()
             });
+
+            
+
+            $(".likeButton").click(function(){
+                event.stopPropagation()
+                console.log("clicked Like Button")
+            })
         })
 
         function ApplyFilters(){
@@ -132,7 +137,8 @@
                       <div class="card-bottom">
                         <span class="author-card">by <span style="font-weight: bold;">{{ idea.author }}</span></span>
                         <span class="vote-number">{{ idea.vote}}</span>
-                        <i class="fa fa-thumbs-up" style="font-size:24px"></i> <!-- TODO : Add a link to backend to perform the action -->
+                        <i style="z-index:100; color: grey;
+                        font-size: 2.2em;"class="likeButton material-icons">thumb_up</i> <!-- TODO : Add a link to backend to perform the action -->
                       </div>
                     </div>
                   </div>
