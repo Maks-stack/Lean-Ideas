@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from App.models import Idea, Comment
+from django.http import JsonResponse
 
 from django.contrib.auth.decorators import login_required
 
@@ -138,3 +139,15 @@ def getIdeaDetail(request, ideaID):
                 return render(request, 'ideaDetails.html', {'idea':idea, 'comments':comments})
         else:
             return render(request,'ideaDetails.html', {'idea':idea, 'comments':comments})
+
+@login_required
+def voteIdea(request):
+    
+    ideaID=request.POST['ideaID']
+    print(ideaID)
+
+    idea = Idea.objects.get(id=ideaID)
+    if request.method == "POST":
+        content = {"votes": idea.vote}
+        return JsonResponse(content)
+       

@@ -8,7 +8,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 from . import views
 
-from App.views import register, getIdeas, addIdea, getIdeaDetail, redirectIdeaBoard
+from App.views import register, getIdeas, addIdea, getIdeaDetail, redirectIdeaBoard, voteIdea
 
 from django.http import HttpResponse
 
@@ -24,5 +24,7 @@ urlpatterns = [
     path("addIdea", addIdea, name="addIdea"),
     path("ideaDetails/<int:ideaID>", getIdeaDetail, name="ideaDetails"),
     path("editIdea/<int:ideaID>", editIdea, name="editIdea"),
-    path("deleteIdea/<int:ideaID>", deleteIdea, name="deleteIdea")
+    path("deleteIdea/<int:ideaID>", deleteIdea, name="deleteIdea"),
+    path("voteIdea/", voteIdea)
+    
 ] 

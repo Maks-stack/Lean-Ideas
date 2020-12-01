@@ -52,7 +52,16 @@
 
             $(".likeButton").click(function(){
                 event.stopPropagation()
-                console.log("clicked Like Button")
+                id = $(this).closest(".card").attr("data-id")
+                
+                $.ajax({
+                    type: "POST",
+                    url: "/voteIdea/",
+                    data: { ideaID: id },
+                    headers: { "X-CSRFToken": '{{ csrf_token }}' }
+                }).done(function(data) {
+                    console.log(data)
+                });
             })
         })
 
@@ -85,7 +94,6 @@
             })
             $('select').formSelect();
         }
-
     </script>
 
 </head>
@@ -133,7 +141,7 @@
                 {% for idea in ideas %}
                 <div class="col s8 m4">
 
-                  <div class="card darken-1">
+                  <div class="card darken-1" data-id= "{{idea.id}}">
                     <div onclick="window.location='/ideaDetails/{{ idea.id }}';" class="card-content">
                       <span class="card-title">{{ idea.name }}</span>
                       <span class="category-card">{{ idea.category }}</span>
