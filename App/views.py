@@ -126,6 +126,15 @@ def redirectIdeaBoard(request):
 def getIdeaDetail(request, ideaID):
     idea = Idea.objects.get(id=ideaID)
     if idea:
-        print(idea.id)
-        print(idea.name)
-        return render(request,'ideaDetails.html', {'idea':idea})
+        comments = Comment.objects.filter(idea=idea)
+        if request.method == "POST":
+            if request.POST.get('content'):
+                content = request.POST['content']
+                author = request.user
+                comment_idea = idea
+
+                comment = Comment(content=content,author=author, idea=comment_idea)
+                comment.save()
+                return render(request, 'ideaDetails.html', {'idea':idea, 'comments':comments})
+        else:
+            return render(request,'ideaDetails.html', {'idea':idea, 'comments':comments})
