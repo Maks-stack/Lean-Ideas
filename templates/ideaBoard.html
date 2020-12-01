@@ -112,8 +112,10 @@
             </div>
 
             {% if "own" in request.path %}
-            <h2 style="vertical-align: middle; display:inline">Your Ideas</h2>
+            <h2 style="vertical-align: middle; display:inline">My Ideas</h2>
             <a style="float: right; display:inline;" class="btn-floating btn-large waves-effect waves-light teal" href="{% url 'addIdea' %}" type="submit"><i class="material-icons">add</i></a>
+            {% else %}
+            <h2 style="vertical-align: middle; display:inline">All Ideas</h2>
             {% endif %}
 
             <div class="row">
