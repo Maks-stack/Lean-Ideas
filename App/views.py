@@ -141,12 +141,12 @@ def getIdeaDetail(request, ideaID):
             return render(request,'ideaDetails.html', {'idea':idea, 'comments':comments})
 
 @login_required
-def voteIdea(request):
-    
+def voteIdea(request):    
     ideaID=request.POST['ideaID']
-    print(ideaID)
 
     idea = Idea.objects.get(id=ideaID)
+    idea.vote +=1
+    idea.save()
     if request.method == "POST":
         content = {"votes": idea.vote}
         return JsonResponse(content)
