@@ -101,3 +101,8 @@ td {
     margin-right: 10px;
     margin-top: 10px;
 }
+
+.card{
+    max-height:200px;
+    overflow-y: hidden;
+}

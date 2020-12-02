@@ -25,12 +25,10 @@
             var instances = M.Dropdown.init(elems);
         });
 
-        var cards = []
-
         var allCards = []
 
         var activeSearchKey = ""
-        var activeCategory="All"
+        var activeCategory= "All"
 
         $( document ).ready(function() {
 
@@ -49,18 +47,39 @@
                 activeCategory = this.value;
                 ApplyFilters()
             });
+
+            
+
+            $(".likeButton").click(function(){
+                event.stopPropagation()
+                id = $(this).closest(".card").attr("data-id")
+                
+                $.ajax({
+                    type: "POST",
+                    url: "/voteIdea/",
+                    data: { ideaID: id },
+                    headers: { "X-CSRFToken": '{{ csrf_token }}' }
+                }).done(function(data) {
+                    console.log(data)
+                });
+            })
         })
 
         function ApplyFilters(){
             
             $(allCards).each(function(i,obj){
-
-                if($(obj).find(".card-title").html().toLowerCase().includes(activeSearchKey) && ($(obj).find(".category-card").html() === activeCategory || activeCategory === "All") ){
+                if(Filter(obj)){ 
                     $(obj).show()
                 }else{
                     $(obj).hide()
                 }
             })
+        }
+
+        function Filter(obj){
+            return $(obj).find(".card-title").html().toLowerCase().includes(activeSearchKey) && //this is the check for the name of the idea
+                    ($(obj).find(".category-card").html() === activeCategory || activeCategory === "All") // this is the check for the category or category that is selected is "ALL"
+                     //We can add more filters here
         }
         
         function InitializeSelect(){
@@ -75,7 +94,6 @@
             })
             $('select').formSelect();
         }
-
     </script>
 
 </head>
@@ -112,8 +130,10 @@
             </div>
 
             {% if "own" in request.path %}
-            <h2 style="vertical-align: middle; display:inline">Your Ideas</h2>
+            <h2 style="vertical-align: middle; display:inline">My Ideas</h2>
             <a style="float: right; display:inline;" class="btn-floating btn-large waves-effect waves-light teal" href="{% url 'addIdea' %}" type="submit"><i class="material-icons">add</i></a>
+            {% else %}
+            <h2 style="vertical-align: middle; display:inline">All Ideas</h2>
             {% endif %}
 
             <div class="row">
@@ -121,7 +141,7 @@
                 {% for idea in ideas %}
                 <div class="col s8 m4">
 
-                  <div class="card darken-1">
+                  <div class="card darken-1" data-id= "{{idea.id}}">
                     <div onclick="window.location='/ideaDetails/{{ idea.id }}';" class="card-content">
                       <span class="card-title">{{ idea.name }}</span>
                       <span class="category-card">{{ idea.category }}</span>
@@ -130,7 +150,8 @@
                       <div class="card-bottom">
                         <span class="author-card">by <span style="font-weight: bold;">{{ idea.author }}</span></span>
                         <span class="vote-number">{{ idea.vote}}</span>
-                        <i class="fa fa-thumbs-up" style="font-size:24px"></i> <!-- TODO : Add a link to backend to perform the action -->
+                        <i style="z-index:100; color: grey;
+                        font-size: 2.2em;"class="likeButton material-icons">thumb_up</i> <!-- TODO : Add a link to backend to perform the action -->
                       </div>
                     </div>
                   </div>
