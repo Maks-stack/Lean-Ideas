@@ -52,7 +52,9 @@
 
             $(".likeButton").click(function(){
                 event.stopPropagation()
-                id = $(this).closest(".card").attr("data-id")
+                
+                var card = $(this).closest(".card")
+                var id = $(card).attr("data-id")
                 
                 $.ajax({
                     type: "POST",
@@ -60,7 +62,7 @@
                     data: { ideaID: id },
                     headers: { "X-CSRFToken": '{{ csrf_token }}' }
                 }).done(function(data) {
-                    console.log(data)
+                    $(card).find(".vote-number").text(data.votes)
                 });
             })
         })

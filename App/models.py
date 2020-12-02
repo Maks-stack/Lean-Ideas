@@ -22,6 +22,9 @@ class Comment(models.Model):
     idea = models.ForeignKey(Idea, on_delete=models.CASCADE)
     createTime = models.DateTimeField(auto_now_add=True)
 
+class VoteUser(models.Model):
+    votingUser = models.ForeignKey(User, on_delete=models.CASCADE)
+    votingIdea = models.ForeignKey(Idea, on_delete=models.CASCADE)
 
 
 

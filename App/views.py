@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from App.models import Idea, Comment
+from App.models import Idea, Comment, VoteUser
 from django.http import JsonResponse
 
 from django.contrib.auth.decorators import login_required
@@ -141,12 +141,18 @@ def getIdeaDetail(request, ideaID):
             return render(request,'ideaDetails.html', {'idea':idea, 'comments':comments})
 
 @login_required
-def voteIdea(request):
-    
-    ideaID=request.POST['ideaID']
-    print(ideaID)
+def voteIdea(request):    
+    ideaID = request.POST['ideaID']
 
     idea = Idea.objects.get(id=ideaID)
+    votings = VoteUser.objects.filter(votingIdea=idea, votingUser=request.user)
+    if not votings:
+        idea.vote += 1
+        idea.save()
+
+        new_vote = VoteUser(votingIdea=idea, votingUser=request.user)
+        new_vote.save()
+
     if request.method == "POST":
         content = {"votes": idea.vote}
         return JsonResponse(content)
