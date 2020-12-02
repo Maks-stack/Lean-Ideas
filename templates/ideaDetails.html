@@ -62,6 +62,19 @@
             {% endfor %}
                     
             {% endif %}
+
+            <div class="comment-form">
+              {% csrf_token %}
+
+              <form action="{% url 'ideaDetails' ideaID=idea.id %}" method="POST">
+
+                <label for="content">Write your comment :</label>
+                <textarea name="content"></textarea>
+
+                <button class="btn btn-success" type="submit">Submit comment</button>
+              </form>
+
+            </div>
           </div>
             
         </div>
