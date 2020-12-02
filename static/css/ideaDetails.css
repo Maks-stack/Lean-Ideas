@@ -1,0 +1,38 @@
+.comment-input{
+    width: 500px; 
+    display: block;
+}
+
+.fa-star{
+    display: flex; 
+    float: right; 
+    padding-top: 2px; 
+    padding-left: 5px; 
+    color: #009688;
+}
+
+.rating-number{
+    color: #009688; 
+    font-size: 20px; 
+    display: flex; 
+    float: right;
+}
+
+.section-title{
+    font-size:20px; 
+    font-weight: bold; 
+    color:#419788;
+    padding-top: 20px;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.comment{
+    padding-bottom: 15px;
+}
+
+.btn{
+    margin-top: 15px;
+}

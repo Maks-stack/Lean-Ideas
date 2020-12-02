@@ -7,8 +7,10 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ideaDetails.css' %}"/>
     <link rel="stylesheet" type="text/css" href="{% static 'css/ideaBoard.css' %}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -37,43 +39,51 @@
         <div class="ideasContainer">
           <div style="margin-bottom: 30px;">
             <h3 style="display:inline; color:#419788"">{{ idea.name}}</h3>
-
+           
             {% if idea.author == user %}
+
             <a style="display: flex; float: right" class="btn btn-success red accent-2" href="{% url 'deleteIdea' idea.id %}" type="submit">Delete <i style="margin-left:10px" class="medium material-icons">delete</i></a>
             <a style="margin-right: 10px;display: flex; float: right" class="btn btn-success" href="{% url 'editIdea' idea.id %}" type="submit">Edit<i style="margin-left:10px" class="medium material-icons">edit</i></a>
-            <!--
-            <a style="display:inline; float: right" class="" href="{% url 'deleteIdea' idea.id %}" type="submit"><i class="medium material-icons">delete</i></span></a>
-            <a style="display:inline; float: right; margin-right: 50px;" class="" href="{% url 'editIdea' idea.id %}" type="submit"><i class="medium material-icons">edit</i></span></a>
-            -->
+            
             {% endif %}
           </div>
           <div>
-            <span class="category">{{ idea.category }}</span>
-            <p  style="font-size:20px; font-weight: bold; color:#419788">Description:</p>
-            <p> {{ idea.content}} </p>
-            <p> Last Updated : {{ idea.lastUpdate}} </p>
-            <p> Rating : {{ idea.vote}} </p>
-           
+              <span class="category">{{ idea.category }}</span>
+
+              <span class="fa fa-star"></span>
+              <span class="rating-number"> {{ idea.vote }} </span>
+              
+              <div>
+              <p class="section-title">Description:</p>
+              <p> {{ idea.content}} </p>
+              <p> <span class="bold">Last Updated : </span>{{ idea.lastUpdate|date:"d F Y" }} </p>
             
-            {% if idea.comments %}
-            <h4>Comments:</h4>
-            {% for comment in idea.comments %}
-            <h5>{{comment}}</h5>
-            {% endfor %}
-                    
-            {% endif %}
+              {% if comments %}
 
-            <div class="comment-form">
-              {% csrf_token %}
+              <p class="section-title">Comments:</p>
 
-              <form action="{% url 'ideaDetails' ideaID=idea.id %}" method="POST">
+              <ul>
+                {% for comment in comments %}
 
-                <label for="content">Write your comment :</label>
-                <textarea name="content"></textarea>
+                <li class="comment"><span class="bold">{{comment.author}} said: </span> {{comment.content}}</li>
 
-                <button class="btn btn-success" type="submit">Submit comment</button>
-              </form>
+                {% endfor %}
+              </ul>                   
+              {% endif %}
 
+              <div class="comment-form">
+                
+
+                <form action="{% url 'ideaDetails' ideaID=idea.id %}" method="POST">
+                  {% csrf_token %}
+
+                  <label style="font-size: 15px;" for="content">Write your comment :</label>
+                  <textarea class="comment-input" name="content"></textarea>
+
+                  <button class="btn btn-success" type="submit">Submit comment</button>
+                </form>
+
+              </div>
             </div>
           </div>
             
