@@ -37,7 +37,7 @@
         <div class="ideasContainer">
           <div style="margin-bottom: 30px;">
             <h3 style="display:inline; color:#419788"">{{ idea.name}}</h3>
-            
+
             {% if idea.author == user %}
             <a style="display: flex; float: right" class="btn btn-success red accent-2" href="{% url 'deleteIdea' idea.id %}" type="submit">Delete <i style="margin-left:10px" class="medium material-icons">delete</i></a>
             <a style="margin-right: 10px;display: flex; float: right" class="btn btn-success" href="{% url 'editIdea' idea.id %}" type="submit">Edit<i style="margin-left:10px" class="medium material-icons">edit</i></a>
@@ -47,6 +47,7 @@
             -->
             {% endif %}
           </div>
+          <div>
             <span class="category">{{ idea.category }}</span>
             <p  style="font-size:20px; font-weight: bold; color:#419788">Description:</p>
             <p> {{ idea.content}} </p>
@@ -61,6 +62,7 @@
             {% endfor %}
                     
             {% endif %}
+          </div>
             
         </div>
     </div>
