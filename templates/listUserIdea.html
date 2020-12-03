@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IdeaBoard</title>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ideaBoard.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
+<body>
+    <div class="pageContainer">
+        <nav>
+            <div class="nav-wrapper teal">
+              <a href="#" class="brand-logo"><img style="margin-left:30px;width: 145px;" src="../static/img/Logo.svg"/></a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a  href="/ideaBoard/all">All Ideas</a></li>
+                <li><a  href="/ideaBoard/own">My Ideas</a></li>
+                  <li><a href="/listUserIdeas">User Ideas</a></li>
+                <li><a  href="c/profile">Profile</a></li>
+                <li><a  href="{% url 'logout' %}" type="submit">Log out</a></li>
+              </ul>
+            </div>
+          </nav>
+
+        <div class="ideasContainer">
+            <form action="{% url 'listUserIdeas' %}" method="POST">
+                {% csrf_token %}
+            <input type="text" placeholder="Enter user" name="user" id="user">
+                <button type="submit">Search</button>
+            </form>
+
+            <h2 style="vertical-align: middle; display:inline">All Ideas</h2>
+
+            <div class="row">
+                {% if ideas %}
+                {% for idea in ideas %}
+                <div class="col s8 m4">
+
+                  <div class="card darken-1" data-id= "{{idea.id}}">
+                    <div onclick="window.location='/ideaDetails/{{ idea.id }}';" class="card-content">
+                      <span class="card-title">{{ idea.name }}</span>
+                      <span class="category-card">{{ idea.category }}</span>
+                      <span class="date-card">{{ idea.lastUpdate|date:"d F Y"}}</span>
+                      <p class="abstract-card">{{ idea.content|truncatechars:30 }}.</p>
+                      <div class="card-bottom">
+                        <span class="author-card">by <span style="font-weight: bold;">{{ idea.author }}</span></span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+
+
+</body>
+</html>
