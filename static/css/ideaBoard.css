@@ -110,3 +110,7 @@ td {
     max-height:200px;
     overflow-y: hidden;
 }
+
+::placeholder, .select-dropdown{
+    color: gray !important;
+}

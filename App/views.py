@@ -162,7 +162,7 @@ def listUserIdeas(request):
     if request.method == "POST":
         user = User.objects.get(username = request.POST['user'])
         ideas = Idea.objects.filter(author = user)
-        return render(request, "listUserIdea.html", {'ideas':ideas})
+        return render(request, "ideaBoard.html", {'ideas':ideas})
     else:
-        return render(request, 'listUserIdea.html')    
+        return render(request, 'ideaBoard.html')    
        
