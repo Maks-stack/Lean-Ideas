@@ -156,4 +156,13 @@ def voteIdea(request):
     if request.method == "POST":
         content = {"votes": idea.vote}
         return JsonResponse(content)
+    
+@login_required
+def listUserIdeas(request):
+    if request.method == "POST":
+        user = User.objects.get(username = request.POST['user'])
+        ideas = Idea.objects.filter(author = user)
+        return render(request, "listUserIdea.html", {'ideas':ideas})
+    else:
+        return render(request, 'listUserIdea.html')    
        
