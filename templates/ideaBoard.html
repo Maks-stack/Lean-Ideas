@@ -28,6 +28,7 @@
         var allCards = []
 
         var activeSearchKey = ""
+        var sctiveSearchKeyUser=""
         var activeCategory= "All"
 
         $( document ).ready(function() {
@@ -42,13 +43,15 @@
                 activeSearchKey = $(this).val().toLowerCase()
                 ApplyFilters()
             })
+            $("#filterbyUser").on("input", function(){
+                activeSearchKeyUser = $(this).val().toLowerCase()
+                ApplyFilters()
+            })
 
             $('#categorySelector').on('change', function (e) {
                 activeCategory = this.value;
                 ApplyFilters()
             });
-
-            
 
             $(".likeButton").click(function(){
                 event.stopPropagation()
@@ -79,9 +82,12 @@
         }
 
         function Filter(obj){
-            return $(obj).find(".card-title").html().toLowerCase().includes(activeSearchKey) && //this is the check for the name of the idea
-                    ($(obj).find(".category-card").html() === activeCategory || activeCategory === "All") // this is the check for the category or category that is selected is "ALL"
-                     //We can add more filters here
+            
+            var searchCard = $(obj).find(".card-title").html().toLowerCase().includes(activeSearchKey) &&//this is the check for the name of the idea
+                            $(obj).find(".author-card > span").html().toLowerCase().includes(activeSearchKeyUser) && 
+                            ($(obj).find(".category-card").html() === activeCategory || activeCategory === "All")
+
+            return  searchCard
         }
         
         function InitializeSelect(){
@@ -116,11 +122,9 @@
 
             <div class="filteringContainer">
                 <input class="search-input" style="margin-top: 1rem;" placeholder="Keyword search..." id="filterByTitle" type="text" class="validate">
-                {% if "all" in request.path %}
-                <form action="{% url 'listUserIdeas' %}" method="POST">
-                    {% csrf_token %}
-                <input class="search-input" style="margin-top: 1rem;" type="text" placeholder="Search by user..." name="user" id="user">
-                </form>
+                
+                <input id= "filterbyUser" class="search-input" style="margin-top: 1rem;" type="text" placeholder="Search by user..." name="user" id="user">
+                
                 {% endif %}
                 
                 <div class="input-field col s12">
