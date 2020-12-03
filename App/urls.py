@@ -25,6 +25,7 @@ urlpatterns = [
     path("ideaDetails/<int:ideaID>", getIdeaDetail, name="ideaDetails"),
     path("editIdea/<int:ideaID>", editIdea, name="editIdea"),
     path("deleteIdea/<int:ideaID>", deleteIdea, name="deleteIdea"),
-    path("voteIdea/", voteIdea)
+    path("voteIdea/", voteIdea),
+    path("listUserIdeas", listUserIdeas, name="listUserIdeas")
     
 ] 
