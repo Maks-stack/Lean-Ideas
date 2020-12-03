@@ -42,10 +42,10 @@
             {% if idea.author == user %}
 
             <a style="display: flex; float: right" class="btn btn-success red accent-2" href="{% url 'deleteIdea' idea.id %}" type="submit">Delete <i style="margin-left:10px" class="medium material-icons">delete</i></a>
-            <a style="margin-right: 10px;display: flex; float: right" class="btn btn-success" href="{% url 'editIdea' idea.id %}" type="submit">Edit<i style="margin-left:10px" class="medium material-icons">edit</i></a>
+            <a style="margin-right: 10px;display: flex; float: right; margin-left: 10px;" class="btn btn-success" href="{% url 'editIdea' idea.id %}" type="submit">Edit<i style="margin-left:10px" class="medium material-icons">edit</i></a>
             
             {% endif %}
-            <a style="background-color: white !important; color:#26a69a; margin-right: 10px; display: flex; float: right" class="btn btn-success red accent-2" onclick="goBack()">Back</a>
+            <a style="background-color: white !important; color:#26a69a; display: flex; float: right" class="btn btn-success red accent-2" onclick="goBack()">Back</a>
           </div>
           <div>
               <span class="category">{{ idea.category }}</span>
