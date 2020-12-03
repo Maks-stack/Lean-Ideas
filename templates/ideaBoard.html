@@ -145,7 +145,7 @@
                 <div class="col s8 m4">
 
                   <div class="card darken-1" data-id= "{{idea.id}}">
-                    <div onclick="window.location='/ideaDetails/{{ idea.id }}';" class="card-content">
+                    <div onclick="viewIdea(this,{{idea.id}})" class="card-content">
                       <span class="card-title">{{ idea.name }}</span>
                       <span class="category-card">{{ idea.category }}</span>
                       <span class="date-card">{{ idea.lastUpdate|date:"d F Y"}}</span>
@@ -153,8 +153,7 @@
                       <div class="card-bottom">
                         <span class="author-card">by <span style="font-weight: bold;">{{ idea.author }}</span></span>
                         <span class="vote-number">{{ idea.vote}}</span>
-                        <i style="z-index:100; color: grey;
-                        font-size: 2.2em;"class="likeButton material-icons">thumb_up</i> <!-- TODO : Add a link to backend to perform the action -->
+                        <span class="fa fa-star fa-lg likeButton"></span>
                       </div>
                     </div>
                   </div>
@@ -170,6 +169,6 @@
     </div>
     
         
-
+    <script type="text/javascript" src="{% static 'js/ideaBoard.js' %}"></script>
 </body>
 </html>

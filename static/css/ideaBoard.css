@@ -92,8 +92,12 @@ td {
     align-content: space-between;
 }
 
-.fa{
-    margin-top: 5px;
+.fa-star{
+    padding-top: 14px;
+}
+
+.fa-star:hover{
+    color: yellow;
 }
 
 .vote-number{
