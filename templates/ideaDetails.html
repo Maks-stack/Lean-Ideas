@@ -41,10 +41,22 @@
            
             {% if idea.author == user %}
 
-            <a style="display: flex; float: right" class="btn btn-success red accent-2" href="{% url 'deleteIdea' idea.id %}" type="submit">Delete <i style="margin-left:10px" class="medium material-icons">delete</i></a>
+            <a id="myBtn" style="display: flex; float: right" class="btn btn-success red accent-2" href="#" type="submit">Delete <i style="margin-left:10px" class="medium material-icons">delete</i></a>
+            
             <a style="margin-right: 10px;display: flex; float: right; margin-left: 10px;" class="btn btn-success" href="{% url 'editIdea' idea.id %}" type="submit">Edit<i style="margin-left:10px" class="medium material-icons">edit</i></a>
             
             {% endif %}
+                        <!-- Trigger/Open The Modal -->
+                       
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal-delete">
+                            <!-- Modal content -->
+                            <div style="overflow: hidden;" class="modal-delete-content">
+                                <p style="font-weight: bold; text-align: center;">Are you sure you want to delete this idea?</p>
+                                <a style="display: flex; float: right" class="btn btn-success" href="{% url 'deleteIdea' idea.id %}" type="submit">Confirm</a>
+                                <button class="close btn-success btn">Dismiss</button>
+                            </div>
+                        </div>
             <a style="background-color: white !important; color:#26a69a; display: flex; float: right" class="btn btn-success red accent-2" onclick="goBack()">Back</a>
           </div>
           <div>
