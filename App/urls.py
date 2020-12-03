@@ -8,7 +8,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 
 from . import views
 
-from App.views import register, getIdeas, addIdea, getIdeaDetail, redirectIdeaBoard, voteIdea
+from App.views import register, getIdeas, addIdea, getIdeaDetail, redirectIdeaBoard, voteIdea, listUserIdeas
 
 from django.http import HttpResponse
 
