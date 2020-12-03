@@ -114,10 +114,18 @@ def deleteIdea(request, ideaID):
 @login_required
 def getIdeas(request, filter):
     ideas = Idea.objects.all()
+    votedIdeas = VoteUser.objects.filter(votingUser = request.user).values_list('votingIdea', flat=True)
+    list = []
+    i = 0
+    for index in votedIdeas:
+        list.append(votedIdeas[i])
+        i = i + 1
+    print(votedIdeas)
+    print(ideas)
     if filter == "own":
         ideas = Idea.objects.filter(author=request.user)
     
-    return render(request,'ideaBoard.html', {'ideas': ideas})   # I changed this
+    return render(request,'ideaBoard.html', {'ideas': ideas, 'list': list})
 
 @login_required
 def redirectIdeaBoard(request):
