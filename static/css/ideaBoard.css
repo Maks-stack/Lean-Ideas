@@ -114,3 +114,13 @@ td {
 ::placeholder, .select-dropdown{
     color: gray !important;
 }
+
+.error-message{
+    width: 80%;
+    margin: auto;
+}
+
+.error-message > p{
+    font-size: 20px;
+    text-align: center;
+}
