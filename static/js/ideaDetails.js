@@ -8,3 +8,7 @@ addCommentButton.addEventListener("click",(event) =>{
     commentSection.style.display = "block";
     addCommentButton.style.display = "none";
 });
+
+function goBack(){
+    window.history.back();
+}
