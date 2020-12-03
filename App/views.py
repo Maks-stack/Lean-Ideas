@@ -160,9 +160,13 @@ def voteIdea(request):
 @login_required
 def listUserIdeas(request):
     if request.method == "POST":
-        user = User.objects.get(username = request.POST['user'])
-        ideas = Idea.objects.filter(author = user)
-        return render(request, "ideaBoard.html", {'ideas':ideas})
+        error = 'User does not exist'
+        user = User.objects.filter(username = request.POST['user'])
+        if user:
+            ideas = Idea.objects.filter(author = user[0])
+            return render(request, "ideaBoard.html", {'ideas':ideas})
+        else:
+            return render(request, "ideaBoard.html", {'error':error})
     else:
         return render(request, 'ideaBoard.html')    
        
