@@ -116,10 +116,12 @@
 
             <div class="filteringContainer">
                 <input class="search-input" style="margin-top: 1rem;" placeholder="Keyword search..." id="filterByTitle" type="text" class="validate">
+                {% if "all" in request.path %}
                 <form action="{% url 'listUserIdeas' %}" method="POST">
                     {% csrf_token %}
                 <input class="search-input" style="margin-top: 1rem;" type="text" placeholder="Search by user..." name="user" id="user">
                 </form>
+                {% endif %}
                 
                 <div class="input-field col s12">
                     <select id="categorySelector">
