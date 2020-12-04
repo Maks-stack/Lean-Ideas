@@ -162,7 +162,7 @@
                         <span class="author-card">by <span style="font-weight: bold;">{{ idea.author }}</span></span>
                         <span class="vote-number">{{ idea.vote}}</span>
                           {% if idea.id in list %}
-                            voted
+                            <span style="color: yellow" class="fa fa-star fa-lg likeButton"></span>
                             {% else %}
                             <span class="fa fa-star fa-lg likeButton"></span>
                             {% endif %}
