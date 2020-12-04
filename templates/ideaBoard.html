@@ -28,7 +28,7 @@
         var allCards = []
 
         var activeSearchKey = ""
-        var sctiveSearchKeyUser=""
+        var activeSearchKeyUser= ""
         var activeCategory= "All"
 
         $( document ).ready(function() {
@@ -86,11 +86,11 @@
 
         function Filter(obj){
             
-            var searchCard = $(obj).find(".card-title").html().toLowerCase().includes(activeSearchKey) &&//this is the check for the name of the idea
+            var isActive = $(obj).find(".card-title").html().toLowerCase().includes(activeSearchKey) &&//this is the check for the name of the idea
                             $(obj).find(".author-card > span").html().toLowerCase().includes(activeSearchKeyUser) && 
                             ($(obj).find(".category-card").html() === activeCategory || activeCategory === "All")
 
-            return  searchCard
+            return  isActive
         }
         
         function InitializeSelect(){
